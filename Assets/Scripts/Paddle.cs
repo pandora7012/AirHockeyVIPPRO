@@ -17,31 +17,15 @@ public class Paddle : MonoBehaviour
     
     void Update()
     {
+        
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (mousePos.x  < boundX.x || mousePos.x > boundX.y || mousePos.y < boundY.x || mousePos.y > boundY.y)
+            return;
+        
         if (Input.GetMouseButton(0))
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (wasJustClicked)
-            {
-                wasJustClicked = false;
-
-                if (mousePos.x >= boundX.x && mousePos.x <= boundX.y && mousePos.y >= boundY.x && mousePos.y <= boundY.y)
-                {
-                    canMove = true;
-                }
-                else
-                {
-                    canMove = false;
-                }
-            }
-            if (canMove)
-            {
-                rb.MovePosition(mousePos);
-            }
+            rb.MovePosition(mousePos);
         }
-        else
-        {
-            wasJustClicked = true;
-        }
+        
     }
 }
