@@ -6,10 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static Punk punk;
     public static GameObject save;
-    public static int redPoint;
-    public static int greenPoint;
+    private int redPoint;
+    private int greenPoint;
 
-    public static void SetDiem(bool GhiBan) //True: Do ghi ban; False: Xanh ghi ban
+    private void SetDiem(bool GhiBan) //True: Do ghi ban; False: Xanh ghi ban
     {
         if (GhiBan)
         {
