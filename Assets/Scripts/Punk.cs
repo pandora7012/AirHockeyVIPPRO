@@ -6,4 +6,10 @@ public class Punk : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float constantSpeed;
+
+
+    public void Goal(bool thangDoGhiBan)
+    {
+       
+    }
 }
