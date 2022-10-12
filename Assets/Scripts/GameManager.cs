@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     public static GameObject save;
     private int redPoint; //Diem ben do
     private int greenPoint; //Diem ben xanh
+    public bool pauseGame;
+
+    void Start()
+    {
+        redPoint = 0;
+        greenPoint = 0;
+    }
 
     public void SetPoint(bool GhiBan) //True: Red ghi ban; False: Green ghi ban
     {
@@ -29,20 +36,6 @@ public class GameManager : MonoBehaviour
     public int GetGreenPoint()
     {
         return greenPoint; //Tra ve diem ben xanh
-    }
-
-    public static void PauseGame(bool pauseGame)
-    {
-        if (pauseGame)
-        {
-            //dung lai
-            //game.Enabled=false;
-        }
-        else
-        {
-            //tiep tuc
-            //game.Enabled=true;
-        }
     }
 }
 
