@@ -6,19 +6,29 @@ public class GameManager : MonoBehaviour
 {
     public static Punk punk;
     public static GameObject save;
-    private int redPoint;
-    private int greenPoint;
+    private int redPoint; //Diem ben do
+    private int greenPoint; //Diem ben xanh
 
-    private void SetDiem(bool GhiBan) //True: Do ghi ban; False: Xanh ghi ban
+    public void SetPoint(bool GhiBan) //True: Red ghi ban; False: Green ghi ban
     {
         if (GhiBan)
         {
-            redPoint++;
+            redPoint++; //Cong diem cho red
         }
         else
         {
-            greenPoint++;
+            greenPoint++; //Cong diem cho green
         }
+    }
+
+    public int GetRedPoint()
+    {
+        return redPoint; //Tra ve diem ben do
+    }
+
+    public int GetGreenPoint()
+    {
+        return greenPoint; //Tra ve diem ben xanh
     }
 
     public static void PauseGame(bool pauseGame)
