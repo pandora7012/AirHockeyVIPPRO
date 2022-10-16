@@ -5,17 +5,26 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D col)
+    [SerializeField] private bool isRedHome;
+    [SerializeField] private bool isBlueHome;
+
+
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.CompareTag("Punk"))
+        if (col.gameObject.CompareTag("Punk"))
         {
             GoalIn();
+            Debug.Log("Goal");
         }
-            
     }
 
-    public void GoalIn()
+    private void GoalIn()
     {
-        // do something
+        if (isRedHome)
+        {
+            GameManager.Instance.RedScored();
+        }
+        else
+            GameManager.Instance.GreenScored();
     }
 }

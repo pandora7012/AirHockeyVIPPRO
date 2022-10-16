@@ -10,11 +10,10 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        updateScore();
+        UpdateScore();
     }
-    private void updateScore() {
-        GameManager gameManager = new GameManager();
-        scoreGreen.text = gameManager.GetRedPoint().ToString();
-        scoreRed.text = gameManager.GetGreenPoint().ToString();
+    public void UpdateScore() {
+        scoreGreen.text = GameManager.Instance.GetRedPoint().ToString();
+        scoreRed.text = GameManager.Instance.GetGreenPoint().ToString();
     }
 }

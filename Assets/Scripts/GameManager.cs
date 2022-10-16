@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public static Punk punk;
-    public static GameObject save;
+    public Punk punk;
     private int redPoint; //Diem ben do
     private int greenPoint; //Diem ben xanh
     public bool pauseGame;
+    public Score score; 
 
     void Start()
     {
@@ -26,6 +26,18 @@ public class GameManager : Singleton<GameManager>
         {
             greenPoint++; //Cong diem cho green
         }
+    }
+
+    public void RedScored()
+    {
+        redPoint++; 
+        score.UpdateScore();
+    }
+    
+    public void GreenScored()
+    {
+        greenPoint++;
+        score.UpdateScore();
     }
 
     public int GetRedPoint()
