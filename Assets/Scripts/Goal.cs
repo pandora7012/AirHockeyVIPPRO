@@ -14,17 +14,26 @@ public class Goal : MonoBehaviour
         if (col.gameObject.CompareTag("Punk"))
         {
             GoalIn();
-            Debug.Log("Goal");
+            if (GameManager.Instance.GetRedPoint() < 10 && GameManager.Instance.GetGreenPoint() < 10)
+                GameManager.Instance.punk.OnReset();
         }
     }
 
     private void GoalIn()
     {
+        GameManager.Instance.punk.gameObject.SetActive(false);
         if (isRedHome)
         {
             GameManager.Instance.RedScored();
         }
         else
+        {
             GameManager.Instance.GreenScored();
+        }
+
+        if (GameManager.Instance.GetRedPoint() == 10 || GameManager.Instance.GetGreenPoint() == 10)
+        {
+            GameManager.Instance.WinGame(isRedHome);
+        }
     }
 }

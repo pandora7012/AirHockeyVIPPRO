@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class AITest : MonoBehaviour
 {
-    public float MaxMovementSpeed;
+    public float maxMovementSpeed;
     private Rigidbody2D rb;
     private Vector2 startingPosition;
 
-    public Rigidbody2D Puck;
+    public Rigidbody2D puck;
 
-    public Transform PlayerBoundaryHolder;
+    public Transform playerBoundaryHolder;
     private Boundary playerBoundary;
 
-    public Transform PuckBoundaryHolder;
+    public Transform puckBoundaryHolder;
     private Boundary puckBoundary;
 
     private Vector2 targetPosition;
@@ -25,22 +25,25 @@ public class AITest : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startingPosition = rb.position;
 
-        playerBoundary = new Boundary(PlayerBoundaryHolder.GetChild(0).position.y,
-                              PlayerBoundaryHolder.GetChild(1).position.y,
-                              PlayerBoundaryHolder.GetChild(2).position.x,
-                              PlayerBoundaryHolder.GetChild(3).position.x);
+        playerBoundary = new Boundary(playerBoundaryHolder.GetChild(0).position.y,
+                              playerBoundaryHolder.GetChild(1).position.y,
+                              playerBoundaryHolder.GetChild(2).position.x,
+                              playerBoundaryHolder.GetChild(3).position.x);
 
-        puckBoundary = new Boundary(PuckBoundaryHolder.GetChild(0).position.y,
-                              PuckBoundaryHolder.GetChild(1).position.y,
-                              PuckBoundaryHolder.GetChild(2).position.x,
-                              PuckBoundaryHolder.GetChild(3).position.x);
+        puckBoundary = new Boundary(puckBoundaryHolder.GetChild(0).position.y,
+                              puckBoundaryHolder.GetChild(1).position.y,
+                              puckBoundaryHolder.GetChild(2).position.x,
+                              puckBoundaryHolder.GetChild(3).position.x);
     }
 
     private void FixedUpdate()
     {
         float movementSpeed;
 
-        if (Puck.position.y < puckBoundary.Down)
+        if (!GameManager.Instance.punk.gameObject.activeSelf)
+            return; 
+
+        if (puck.position.y < puckBoundary.Down)
         {
             if (isFirstTimeInOpponentsHalf)
             {
@@ -48,8 +51,8 @@ public class AITest : MonoBehaviour
                 offsetXFromTarget = Random.Range(-1f, 1f);
             }
 
-            movementSpeed = MaxMovementSpeed * Random.Range(0.1f, 0.3f);
-            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x + offsetXFromTarget, playerBoundary.Left,
+            movementSpeed = maxMovementSpeed * Random.Range(0.1f, 0.3f);
+            targetPosition = new Vector2(Mathf.Clamp(puck.position.x + offsetXFromTarget, playerBoundary.Left,
                                                     playerBoundary.Right),
                                         startingPosition.y);
         }
@@ -57,10 +60,10 @@ public class AITest : MonoBehaviour
         {
             isFirstTimeInOpponentsHalf = true;
 
-            movementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
-            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
+            movementSpeed = Random.Range(maxMovementSpeed * 0.4f, maxMovementSpeed);
+            targetPosition = new Vector2(Mathf.Clamp(puck.position.x, playerBoundary.Left,
                                         playerBoundary.Right),
-                                        Mathf.Clamp(Puck.position.y, playerBoundary.Down,
+                                        Mathf.Clamp(puck.position.y, playerBoundary.Down,
                                         playerBoundary.Up));
         }
 

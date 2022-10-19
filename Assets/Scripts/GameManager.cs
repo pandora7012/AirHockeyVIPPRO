@@ -8,7 +8,8 @@ public class GameManager : Singleton<GameManager>
     private int redPoint; //Diem ben do
     private int greenPoint; //Diem ben xanh
     public bool pauseGame;
-    public Score score; 
+    public Score score;
+    public WingameUI winGameUI; 
 
     void Start()
     {
@@ -48,6 +49,11 @@ public class GameManager : Singleton<GameManager>
     public int GetGreenPoint()
     {
         return greenPoint; //Tra ve diem ben xanh
+    }
+
+    public void WinGame(bool isRed)
+    {
+        winGameUI.OnShow(isRed);
     }
 }
 
