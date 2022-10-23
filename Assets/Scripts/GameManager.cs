@@ -9,14 +9,10 @@ public class GameManager : Singleton<GameManager>
     private int redPoint; //Diem ben do
     private int greenPoint; //Diem ben xanh
     public bool pauseGame;
-<<<<<<< Updated upstream
-    public Score score; 
-
-=======
     public Score score;
+
     public WingameUI winGameUI;
-    
->>>>>>> Stashed changes
+
     void Start()
     {
         redPoint = 0;
@@ -56,14 +52,10 @@ public class GameManager : Singleton<GameManager>
     {
         return greenPoint; //Tra ve diem ben xanh
     }
-<<<<<<< Updated upstream
-}
 
-=======
 
     public void WinGame(bool isRed)
     {
         winGameUI.OnShow(isRed);
     }
 }
->>>>>>> Stashed changes
