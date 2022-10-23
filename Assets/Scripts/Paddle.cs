@@ -9,16 +9,21 @@ public class Paddle : MonoBehaviour
 
     [SerializeField] private Vector2 boundX;
     [SerializeField] private Vector2 boundY;
-    [SerializeField] private Rigidbody2D rb; 
-    
+    [SerializeField] private Rigidbody2D rb;
+
     void Start()
     {
     }
+<<<<<<< Updated upstream
     
     void FixedUpdate()
+=======
+
+    void Update()
+>>>>>>> Stashed changes
     {
-        
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+<<<<<<< Updated upstream
         if (!(mousePos.x  < boundX.x || mousePos.x > boundX.y || mousePos.y < boundY.x || mousePos.y > boundY.y))
         {
            /* if (Input.GetMouseButton(0))
@@ -27,6 +32,12 @@ public class Paddle : MonoBehaviour
             /*}*/
         }
         else
+=======
+        if (mousePos.x < boundX.x || mousePos.x > boundX.y || mousePos.y < boundY.x || mousePos.y > boundY.y)
+            return;
+
+        if (Input.GetMouseButton(0))
+>>>>>>> Stashed changes
         {
             if ((mousePos.x < boundX.x &&  mousePos.y < boundY.x) || (mousePos.x < boundX.x && mousePos.y > boundY.y)
                 || (mousePos.x > boundX.y && mousePos.y < boundY.x) || (mousePos.x > boundX.y && mousePos.y > boundY.y))
@@ -47,8 +58,11 @@ public class Paddle : MonoBehaviour
             }
             
         }
+<<<<<<< Updated upstream
         
         
         
+=======
+>>>>>>> Stashed changes
     }
 }
